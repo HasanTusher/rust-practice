@@ -24,8 +24,25 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let mut contents = String::new();
 
     f.read_to_string(&mut contents)?;
-
-    println!("With text:\n {}", contents);
-
     Ok(())
+}
+
+fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    vec![]
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "
+            Rust:
+            safe, fast, productive.
+            Pick three.";
+
+        assert_eq!(vec!["safe, fast, productive"], search(query, contents));
+    }
 }

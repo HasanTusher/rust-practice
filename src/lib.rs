@@ -17,10 +17,11 @@ impl Config {
         let query = String::from(&args[1]);
         let filename = String::from(&args[2]);
         let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
+
         Ok(Config {
             query,
             filename,
-            case_sensitive: case_sensitive,
+            case_sensitive,
         })
     }
 }
